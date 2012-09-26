@@ -110,7 +110,7 @@ Change `0.x.x` to the version of NodeJS you'd like your shell to default to or r
 
     ########################################################################################
     # nodejs-version (activate default NodeJS version and autocompletion)
-    # export NodeJS_VERSIONS                  => base location of NodeJS versions
+    # export NODEJS_VERSIONS                  => base location of NodeJS versions
     # export NODEJSVERSION_DISABLE_COMPLETE=1 => to disable shell completion
     ########################################################################################
     export NODEJS_VERSIONS=$(dirname $(brew --prefix node))
