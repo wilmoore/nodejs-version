@@ -50,7 +50,7 @@ Non-Features
 ----------------------------
 
 -   does not rely on symlinks or sub-shells
--   does not attempt to compile, build, or install NodeJS (you might be interested in [nodejs-install](http://github.com/wilmoore/nodejs-install))
+-   does not attempt to compile, build, or install NodeJS (you might be interested in [nodejs-latest](http://github.com/wilmoore/nodejs-latest))
 
 
 Usage Examples
