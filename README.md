@@ -62,7 +62,7 @@ Usage Examples
 
 **List installed NodeJS version(s)**
 
-    % ls $NODEJS_VERSIONS
+    % ls -A1 $NODEJS_VERSIONS
 
 **Identify the active NodeJS version**
 
