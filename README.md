@@ -22,10 +22,10 @@ Who is it for?
 Features
 ----------------------------
 
--   shell completion (`nodejs-version 0.[TAB]`)
--   unobtrusive and non-destructive (no sudo, symlinks, or sub-shells)
--   provides access to `node` and friends, as well as manpages by updating `$PATH` and `$MANPATH` environment variables
--   does not attempt to compile, build, or install NodeJS (though you might be interested in [nodejs-latest][nodejs-latest])
+-   shell completion (`nodejs-version 0.[TAB]`).
+-   unobtrusive and non-destructive (no sudo, symlinks, or sub-shells).
+-   provides access to `node` and friends, as well as manpages by updating `$PATH` and `$MANPATH` environment variables.
+-   does not attempt to compile, build, or install NodeJS (though you might be interested in [nodejs-latest][nodejs-latest]).
 
 
 Usage Examples
