@@ -61,8 +61,6 @@ Download and Installation
 
 **NOTE**: `$HOME/local/nodejs-version` is only the suggested location; put it anywhere you like. It does not have to be in your `$PATH`.
 
-**Activate**
-
 Add the following lines to `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.zshrc`, or your shell's equivalent configuration file:
 
     export NODEJS_VERSIONS=${HOME}/local/nodejs
