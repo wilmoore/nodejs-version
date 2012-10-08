@@ -59,7 +59,7 @@ Download and Installation
     % curl -# -L https://github.com/wilmoore/nodejs-version/tarball/master | tar -xz --strip 1
     % cd -
 
-**NOTE**: `$HOME/local/nodejs-version` is only the suggested location; put it anywhere you like. It does not have to be in your `$PATH`.
+**NOTE**: `$HOME/local/nodejs-version` is only the suggested location; put it anywhere you like. It does **NOT** have to be in your `$PATH`.
 
 Add the following lines to `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.zshrc`, or your shell's equivalent configuration file:
 
