@@ -1,56 +1,32 @@
-nodejs-version: stupid simple NodeJS version switching
+Unobtrusive, non-destructive, NodeJS version switching
 ============================================================
 
 
-**nodejs-version** exposes a single command `nodejs-version` allowing developers to switch between multiple versions of NodeJS.
+**nodejs-version** exposes a single command `nodejs-version`, including command completion, allowing developers to toggle between multiple versions of NodeJS.
 
-**nodejs-version** is conceptually similar to [rbenv](https://github.com/sstephenson/rbenv); however, **much** `simpler`.
+**nodejs-version** is conceptually similar to **[nvm][nvm]** and **[n][n]**; but lighter.
 
-**nodejs-version** consists of a single function and shell completion.
+**nodejs-version** lives in a single file which can be sourced into your shell.
 
-**nodejs-version** lives in a single file which can be sourced into your shell profile.
+**nodejs-version** encourages a `no-sudo` (i.e. no `/usr/local`) approach to installation of NodeJS.
 
-**nodejs-version** considers leaky abstractions to be a huge flailing `fail`.
+**nodejs-version** considers leaky abstractions to be undesirable in favor of the classic UNIX notion of solid, single-purpose tools.
 
 
 Who is it for?
 ----------------------------
 
-**nodejs-version** is primarily for developers wanting multiple versions of NodeJS on Linux or Mac.
-
-
-Who is it _NOT_ for?
-----------------------------
-
-If you are a super neck-beard academic, you are likely already doing this as `a matter of fact` as part of your normal workflow;
-in which case, **nodejs-version** is likely not going to be very interesting to you. I respect that :)
-
-
-Rationale
-----------------------------
-
-**nodejs-version** attempts to stick to the classic UNIX notion that tools should do one thing well.
-
->   While there are tools that attempt to [solve](http://www.gnu.org/s/stow/) this problem, none of the tools I've found were simple enough for me.
-
-**nodejs-version** is excellent for automated testing of applications against multiple NodeJS versions on a single machine.
+**nodejs-version** is primarily for developers working with multiple versions of NodeJS on Linux or Mac. (Window/PowerShell version will likely be available in the near future).
 
 
 Features
 ----------------------------
 
--   keep it simple...no magic
--   promotes multiple, per-user NodeJS installs
--   shell completion (e.g. nodejs-version 0.[PRESS-TAB-NOW])
--   provides access to the manpages of the current version by updating your `$MANPATH` environment variable
--   unobtrusive install/uninstall (we won't leave files and symlinks all over the place)
-
-
-Non-Features
-----------------------------
-
--   does not rely on symlinks or sub-shells
--   does not attempt to compile, build, or install NodeJS (you might be interested in [nodejs-latest](http://github.com/wilmoore/nodejs-latest))
+-   shell completion (`nodejs-version 0.[TAB]`)
+-   provides access to the NodeJS programs and manpages by updating `$PATH` and `$MANPATH` environment variables
+-   access to the manpages of the current version by updating your `$MANPATH` environment variable
+-   unobtrusive and non-destructive (no sudo, symlinks, or sub-shells)
+-   does not attempt to compile, build, or install NodeJS (though you might be interested in [nodejs-latest][nodejs-latest])
 
 
 Usage Examples
@@ -76,80 +52,59 @@ Usage Examples
 Download and Installation
 ----------------------------
 
-**Standard Install**
+**Install/Upgrade**
 
+    % rm -rdfi $HOME/local/nodejs-version
     % mkdir -p $HOME/local/nodejs-version
     % cd !$
     % curl -# -L https://github.com/wilmoore/nodejs-version/tarball/master | tar -xz --strip 1
     % cd -
 
-**Homebrew**
+**NOTE**: `$HOME/local/nodejs-version` is only the suggested location; put it anywhere you like. It does not have to be in your `$PATH`.
 
-    % brew install nodejs-version
+**Activate**
+
+Add the following lines to `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.zshrc`, or your shell's equivalent configuration file:
+
+    export NODEJS_VERSIONS=${HOME}/local/nodejs
+    source $HOME/local/nodejs-version/nodejs-version.sh
+
+**Optional Configuration**
+
+-   You can have your terminal sessions default to a particular NodeJS version with `nodejs-version 0.x.x >/dev/null`  (where `0.x.x` is the version of your choice).
+-   You can change where the program looks for NodeJS installations with `export NODEJS_VERSIONS=/path/to/nodejs/versions`.
+-   You can disable shell completion with `export NODEJSVERSION_DISABLE_COMPLETE=1`.
 
 
-Activate Default NodeJS version
+Version Toggling
 ----------------------------
 
-Add the following script block to `$HOME/.bashrc`, `$HOME/.zshrc`, or your shell's equivalent configuration file:
+    % nodejs-version 0.8.9
 
-Change `0.x.x` to the version of NodeJS you'd like your shell to default to or remove `nodejs-version 0.x.x >/dev/null` if you do not wish to have a default version of NodeJS loaded when you start a terminal session.
+*or*
 
-**for standard installs (the comment block is optional)**
-
-    ########################################################################################
-    # nodejs-version (activate default NodeJS version and autocompletion)
-    # export NODEJS_VERSIONS                  => base location of NodeJS versions
-    # export NODEJSVERSION_DISABLE_COMPLETE=1 => to disable shell completion
-    ########################################################################################
-    export NODEJS_VERSIONS=${HOME}/local/nodejs
-    source $HOME/local/nodejs-version/nodejs-version.sh &&
-      nodejs-version 0.x.x >/dev/null
-
-**for Homebrew installs (the comment block is optional)**
-
-    ########################################################################################
-    # nodejs-version (activate default NodeJS version and autocompletion)
-    # export NODEJS_VERSIONS                  => base location of NodeJS versions
-    # export NODEJSVERSION_DISABLE_COMPLETE=1 => to disable shell completion
-    ########################################################################################
-    export NODEJS_VERSIONS=$(dirname $(brew --prefix node))
-    source $(brew --prefix nodejs-version)/nodejs-version.sh
-      && nodejs-version 0.x.x >/dev/null
+    % nodejs-version 0[TAB]
 
 
 Deactivate / Uninstall
 ----------------------------
 
-**Remove Configuration**
+From your `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.zshrc`, or your shell's equivalent configuration file remove the configuration block, then:
 
-From your `$HOME/.bashrc`, `$HOME/.zshrc`, or your shell's equivalent configuration file remove the above mentioned configuration block.
-
-**Remove Files**
-
-    % rm -rf /path-to/nodejs-version # or (brew uninstall nodejs-version)
+    % rm -rdfi $HOME/local/nodejs-version
 
 
-Switching Versions
+Complementary Resources
 ----------------------------
 
-**Call it like this in your terminal**
-
-    $ nodejs-version 0.8.9
-
-**Bash Completion**
-
-    % nodejs-version 0.[PRESS-TAB-NOW]
+-   [nodejs-latest][nodejs-latest]
 
 
 Inspiration
 ----------------------------
 
--   [n](https://github.com/visionmedia/n)
--   [nvm](https://github.com/creationix/nvm)
--   [rbenv](https://github.com/sstephenson/rbenv)
--   [rbfu](https://github.com/hmans/rbfu)
--   [ry](https://github.com/jayferd/ry)
+-   [nvm][nvm]
+-   [n][n]
 
 
 LICENSE
@@ -177,3 +132,9 @@ LICENSE
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
 
+
+
+
+[nvm]:            https://github.com/creationix/nvm
+[n]:              https://github.com/visionmedia/n
+[nodejs-latest]:  https://github.com/wilmoore/nodejs-latest
