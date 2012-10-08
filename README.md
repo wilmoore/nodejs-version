@@ -1,4 +1,4 @@
-Unobtrusive, non-destructive, NodeJS version switching
+Unobtrusive, Non-Destructive, NodeJS version toggling
 ============================================================
 
 
