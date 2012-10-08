@@ -63,7 +63,7 @@ Download and Installation
 
 Add the following lines to `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.zshrc`, or your shell's equivalent configuration file:
 
-    export NODEJS_VERSIONS=${HOME}/local/nodejs
+    export NODEJS_VERSIONS=$HOME/local/nodejs
     source $HOME/local/nodejs-version/nodejs-version.sh
 
 **Optional Configuration**
