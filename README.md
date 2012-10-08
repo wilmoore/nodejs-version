@@ -83,7 +83,7 @@ Version Toggling
     % nodejs-version 0[TAB]
 
 
-Deactivate / Uninstall
+Uninstall
 ----------------------------
 
 From your `$HOME/.bashrc`, `$HOME/.bash_profile`, `$HOME/.zshrc`, or your shell's equivalent configuration file remove the configuration block, then:
